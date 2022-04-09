@@ -4,7 +4,10 @@ import { useParams } from "react-router-dom";
 import { fetchCategory } from "../utils/api";
 
 import Loading from "./Loading";
+import Card from "./Card";
+//
 
+//
 export default function Products() {
   const { id } = useParams();
   const [products, setProducts] = React.useState(null);
@@ -24,16 +27,14 @@ export default function Products() {
       {error && <div>erorr:{error}</div>}
       {products && (
         <div className="container flex_column">
-          {products.map((data, i) => (
-            <li key={i} className="products flex_row">
-              <div className="products_text">
-                <h3>{data.title}</h3>
-              </div>
-              <div className="products_image">
-                <img src={data.image} />
-              </div>
-            </li>
-          ))}
+          <h2>{products[0].category}</h2>
+          <div className="flex_row">
+            {products.map((repo, i) => (
+              <li key={i}>
+                <Card repo={repo} />
+              </li>
+            ))}
+          </div>
         </div>
       )}
     </React.Fragment>

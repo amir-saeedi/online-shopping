@@ -1,18 +1,17 @@
-// export function fetchProductsRepos() {
-//   const endpoint = window.encodeURI(`https://fakestoreapi.com/products`);
-//   return fetch(endpoint)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       if (!data) {
-//         throw new Error("dosn't exist products!!!");
-//       }
-//       console.log(data);
-//       return data;
-//     })
-//     .catch((e) => {
-//       console.log(e.message);
-//     });
-// }
+export function fetchProductsAll() {
+  const endpoint = window.encodeURI(`https://fakestoreapi.com/products`);
+  return fetch(endpoint)
+    .then((res) => res.json())
+    .then((data) => {
+      if (!data) {
+        throw new Error("dosn't exist products!!!");
+      }
+      return data;
+    })
+    .catch((e) => {
+      console.log(e.message);
+    });
+}
 export function fetchCategory(id) {
   return fetch(`https://fakestoreapi.com/products/category/${id}`)
     .then((res) => res.json())
