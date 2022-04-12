@@ -28,7 +28,7 @@ export default function MainPage() {
             <Loading text="loadingMainPage" speed={300} />
           </div>
         )}
-        {error && <div>error:{error}</div>}
+        {error && <div>error:Failed to fetch</div>}
         {data &&
           data.map((dataCategory, i) => (
             <ul key={i}>

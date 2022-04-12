@@ -58,10 +58,20 @@ export default function Product() {
     document
       .querySelectorAll(".details_des")
       .forEach((data, i) => data.classList.remove("active_operations"));
+    document
+      .querySelectorAll(".details_operation")
+      .forEach((data, i) => data.classList.remove("active_details_operation"));
+    let y = document.getElementById(
+      `details_operations${e.target.dataset.operations}`
+    );
     let x = document.getElementById(
       `details_des_operations${e.target.dataset.operations}`
     );
-    return x.classList.add("active_operations");
+    console.log();
+    return (
+      y.classList.add("active_details_operation"),
+      x.classList.add("active_operations")
+    );
   }
 
   return (
@@ -127,11 +137,11 @@ export default function Product() {
               </div>
             )}
           </section>
-          <section className="product_details flex_column">
+          <section className={`product_details flex_column ${theme}`}>
             <div className="details_operations flex_row">
               <button
                 id="details_operations1"
-                className="btn"
+                className="btn details_operation active_details_operation"
                 data-operations="1"
                 onClick={(e) => operations(e)}
               >
@@ -139,7 +149,7 @@ export default function Product() {
               </button>
               <button
                 id="details_operations2"
-                className="btn"
+                className="btn details_operation"
                 data-operations="2"
                 onClick={(e) => operations(e)}
               >
@@ -147,7 +157,7 @@ export default function Product() {
               </button>
               <button
                 id="details_operations3"
-                className="btn"
+                className="btn details_operation"
                 data-operations="3"
                 onClick={(e) => operations(e)}
               >

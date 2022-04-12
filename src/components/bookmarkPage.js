@@ -14,6 +14,7 @@ export default function CartPage() {
   };
   return (
     <React.Fragment>
+      {bookmark.length === 0 && <div className="empty">empty product!</div>}
       <div className="container flex_column">
         <ul className="width-100">
           {bookmark &&

@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 
 import themeContext from "../contexts/theme";
 
+import logo from "../logo.jpg";
+
 export default function Nav({ toggleTheme }) {
   const navigation = useNavigate();
   const [all, setAll] = React.useState("");
@@ -28,12 +30,14 @@ export default function Nav({ toggleTheme }) {
       });
     }
   };
-  // console.log(all);
   return (
     <div className="nav flex_row flex_nowrap">
       <ul className="nav_links">
         <Link to={"/"}>
-          <li className="nav_link nav_home">Online Shop</li>
+          {/* <li className="nav_link nav_home">Online Shop</li> */}
+          <li className="nav_link nav_home">
+            <img src={logo} />
+          </li>
         </Link>
       </ul>
       <div className="nav_dashboard flex_row">

@@ -17,9 +17,10 @@ export default function CartPage() {
   // useEffect(() => {
   cartContext.map((data) => value.current.push(data.price));
   // }, [cartContext]);
-
+  // console.log(cartContext.length === 0 ? true : false);
   return (
     <React.Fragment>
+      {cartContext.length === 0 && <div className="empty">empty product!</div>}
       <div className="container flex_column">
         <ul className="width-100">
           {cartContext &&
@@ -27,7 +28,7 @@ export default function CartPage() {
               <li key={i} className="position">
                 <div className="cart_row flex_row">
                   <div className="cart-image width-50">
-                    <Link to={`product/${data.id}`}>
+                    <Link to={`../product/${data.id}`}>
                       <img src={data.image} />
                     </Link>
                   </div>

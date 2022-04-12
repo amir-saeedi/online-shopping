@@ -13,5 +13,16 @@ export default function Loading({ text = "Loading", speed = 300 }) {
     return () => window.clearInterval(id);
   }, [text, speed]);
 
-  return <p className="loading">{content}</p>;
+  return (
+    <React.Fragment>
+      <div className="flex_column">
+        <div className="loader-wrapper">
+          <div className="loader">
+            <div className="loader loader-inner"></div>
+          </div>
+        </div>
+        <p className="loading">{content}</p>
+      </div>
+    </React.Fragment>
+  );
 }
