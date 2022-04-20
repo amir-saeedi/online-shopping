@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { FaTimes } from "react-icons/fa";
@@ -6,7 +6,6 @@ import { FaTimes } from "react-icons/fa";
 import cart from "../contexts/cart";
 export default function CartPage() {
   const { cartContext, setCart } = React.useContext(cart);
-  // const [value, setValue] = React.useState("");
   const value = React.useRef([]);
 
   const deleteCart = (data) => {
@@ -14,10 +13,9 @@ export default function CartPage() {
       return p.filter((products) => products.id !== data.id);
     });
   };
-  // useEffect(() => {
+
   cartContext.map((data) => value.current.push(data.price));
-  // }, [cartContext]);
-  // console.log(cartContext.length === 0 ? true : false);
+
   return (
     <React.Fragment>
       {cartContext.length === 0 && <div className="empty">empty product!</div>}
@@ -29,7 +27,7 @@ export default function CartPage() {
                 <div className="cart_row flex_row">
                   <div className="cart-image width-50">
                     <Link to={`../product/${data.id}`}>
-                      <img src={data.image} />
+                      <img src={data.image} alt="" />
                     </Link>
                   </div>
                   <div className="cart-title width-40 flex_column">

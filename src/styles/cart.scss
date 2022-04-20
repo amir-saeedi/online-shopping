@@ -1,0 +1,30 @@
+.cart_row {
+  padding-bottom: 40px;
+  img {
+    width: 300px;
+    height: 250px;
+    border-radius: 20px;
+  }
+  h5 {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  span {
+    padding-right: 5px;
+  }
+  input {
+    width: 40px;
+    color: rgb(2, 253, 2);
+    background: #111;
+  }
+}
+.pay {
+  padding: 20px;
+  background: rgb(255, 43, 43);
+  border-radius: 20px;
+  color: #fff;
+  transition: all 0.5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}

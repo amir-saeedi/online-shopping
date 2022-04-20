@@ -1,0 +1,38 @@
+.dark {
+  background: #333;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  div {
+    color: #fff;
+  }
+  .card,
+  .more-bg {
+    box-shadow: -2px 2px 1px rgba(#fff, 0.7);
+    background: #777;
+  }
+  .more-bg {
+    background: #111;
+  }
+  .color-icon-book {
+    color: #111;
+  }
+  .color_book {
+    color: #cecece;
+  }
+  .active_details_operation {
+    color: #000;
+    border-bottom-color: #fff;
+  }
+  .product {
+    border: 2px #fff solid;
+  }
+  .details_des {
+    border: 4px #fff dotted;
+    border-radius: 10px;
+  }
+}

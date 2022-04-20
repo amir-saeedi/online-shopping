@@ -1,0 +1,60 @@
+.card,
+.more-bg {
+  width: 13rem;
+  min-height: 420px;
+  max-height: 420px;
+  background: #fcf6f5;
+  padding-top: 20px;
+  box-shadow: -3px 3px 1px rgba(#444, 0.5);
+  border-radius: 20px;
+  margin: 20px;
+  transition: all 0.5s;
+  .card-title {
+    max-height: 50px;
+    min-height: 50px;
+    text-align: center;
+  }
+  img {
+    min-height: 180px;
+    max-height: 180px;
+    border-radius: 20px;
+  }
+  &:hover {
+    transform: scale(1.05);
+  }
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .price_rate {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+.more {
+  position: relative;
+}
+.more-bg {
+  background: #999;
+  // background: #fdfdfd;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+}
+.more-text {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  text-align: center;
+}

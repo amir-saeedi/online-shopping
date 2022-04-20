@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import themeContext from "../contexts/theme";
+import likeProduct from "../contexts/likedProduct";
+import cart from "../contexts/cart";
 
 import logo from "../logo.jpg";
 
@@ -15,6 +17,9 @@ export default function Nav({ toggleTheme }) {
   const navigation = useNavigate();
   const [all, setAll] = React.useState("");
   const theme = React.useContext(themeContext);
+  const { bookmark } = React.useContext(likeProduct);
+  const { cartContext } = React.useContext(cart);
+
   React.useEffect(() => {
     fetchProductsAll()
       .then((data) => setAll(data))
@@ -33,12 +38,11 @@ export default function Nav({ toggleTheme }) {
   return (
     <div className="nav flex_row flex_nowrap">
       <ul className="nav_links">
-        <Link to={"/"}>
-          {/* <li className="nav_link nav_home">Online Shop</li> */}
-          <li className="nav_link nav_home">
-            <img src={logo} />
-          </li>
-        </Link>
+        <li className="nav_link nav_home">
+          <Link to={"/"}>
+            <img src={logo} alt="logo website" />
+          </Link>
+        </li>
       </ul>
       <div className="nav_dashboard flex_row">
         <div className="search">
@@ -64,16 +68,23 @@ export default function Nav({ toggleTheme }) {
         </div>
         <div className="bookmark">
           <Link to={"/bookmark"}>
-            <div className="bookmark_icon">
+            {bookmark.length === 0 ? (
               <FaHeart size={22} color="#fff" />
-            </div>
+            ) : (
+              <FaHeart size={22} color="green" className="bookmark_icon" />
+            )}
+
+            {bookmark.length === 0 ? null : (
+              <span className="bookmark_span">{bookmark.length}</span>
+            )}
           </Link>
         </div>
         <div className="cart">
           <Link to={"/cart"}>
-            <div className="cart_icon">
-              <FaShoppingBag size={22} color="#fff" />
-            </div>
+            <FaShoppingBag size={22} color="#fff" />
+            {cartContext.length === 0 ? null : (
+              <span className="cart_span">{cartContext.length}</span>
+            )}
           </Link>
         </div>
         <div className="theme_toggle">
