@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaBookmark, FaStar, FaArrowRight } from "react-icons/fa";
@@ -19,7 +19,7 @@ export default function Product() {
   const [error, SetError] = React.useState(null);
   const [someProducts, setSomeProducts] = React.useState(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchProduct(id)
       .then((data) => setProduct(data))
       .catch((e) => SetError(e));

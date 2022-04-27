@@ -36,7 +36,7 @@ export default function Nav({ toggleTheme }) {
     }
   };
   return (
-    <div className="nav flex_row flex_nowrap">
+    <div className={`nav flex_row flex_nowrap`}>
       <ul className="nav_links">
         <li className="nav_link nav_home">
           <Link to={"/"}>

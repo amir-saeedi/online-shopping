@@ -22,7 +22,6 @@ export default function Products() {
   }, [id]);
 
   const isLoading = (data) => data === null && error === null;
-  console.log(products);
   return (
     <React.Fragment>
       {isLoading(products) && <Loading text="Loading Products" speed={300} />}

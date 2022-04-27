@@ -30,20 +30,6 @@ export default function CartPage() {
                     <h5>{data.title}</h5>
                     <div>
                       <span>price= {data.price}</span>
-                      {/* <input
-                        value={data.price / value.current[i] || 1}
-                        min="1"
-                        max="10"
-                        type={"number"}
-                        onChange={(e) => {
-                          setCart((v) => {
-                            const newValue = [...v];
-                            newValue[i].price =
-                              value.current[i] * e.target.value;
-                            return newValue;
-                          });
-                        }}
-                      /> */}
                     </div>
                   </div>
                 </div>
