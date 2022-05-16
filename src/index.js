@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./contexts/theme";
 import { LikeProductProvider } from "./contexts/likedProduct";
 import { CartProvider } from "./contexts/cart";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
 //
 import Nav from "./components/Nav";

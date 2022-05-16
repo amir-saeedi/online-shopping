@@ -70,6 +70,9 @@ h6 {
   font-size: 0.5rem;
   font-weight: 400;
 }
+hr {
+  margin-top: 80px;
+}
 .flex_row,
 .flex_column {
   width: 100%;
@@ -100,11 +103,16 @@ h6 {
 .width-100 {
   width: 100%;
 }
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
 .position {
   position: relative;
 }
 .delete_btn {
   position: absolute;
+  border: none;
   top: 12px;
   right: 11px;
 }

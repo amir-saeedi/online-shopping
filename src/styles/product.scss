@@ -40,21 +40,25 @@
   .product_image {
     height: 400px;
     img {
-      height: 400px;
+      height: 100%;
+      max-width: 100%;
       border-radius: 20px;
     }
   }
 }
 //
 .product_details {
-  background: rgb(0, 255, 0);
+  background: rgb(104, 248, 200);
   border-radius: 10px;
   .details_operations {
     background: rgb(255, 217, 3);
     width: 450px;
     text-align: start;
-    border-radius: 0 0 20px 20px;
+    border-radius: 20px;
     button {
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
       font-weight: bold;
     }
   }
@@ -65,13 +69,14 @@
   }
   .details_des {
     display: none;
+    padding: 30px;
   }
   .active_operations {
     display: block;
   }
   .active_details_operation {
     border-bottom: 3px solid #000;
-    color: #fff;
+    color: rgb(255, 123, 0) !important;
   }
 }
 .color-icon-book {
@@ -79,4 +84,17 @@
 }
 .color_book {
   color: #333;
+}
+@media screen and(max-width:800px) {
+  .product {
+    .product_title {
+      height: 280px;
+      h3 {
+        font-size: 17px;
+      }
+    }
+    .product_image {
+      height: 280px;
+    }
+  }
 }

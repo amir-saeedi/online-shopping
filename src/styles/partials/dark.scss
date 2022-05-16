@@ -31,8 +31,11 @@
   .product {
     border: 2px #fff solid;
   }
-  .details_des {
+  .product_details {
+    padding: 20px;
+    padding-top: 0;
     border: 4px #fff dotted;
+    border-top: 4px solid;
     border-radius: 10px;
   }
 }

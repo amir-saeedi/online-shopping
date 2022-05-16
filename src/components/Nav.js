@@ -44,22 +44,24 @@ export default function Nav({ toggleTheme }) {
           </Link>
         </li>
       </ul>
-      <div className="nav_dashboard flex_row">
+      <div className="nav_dashboard">
         <div className="search">
           <form
             id="na_search"
+            className="flex_row"
             onSubmit={(e) => {
               e.preventDefault();
               navSearch();
             }}
           >
             <input
+              type="text"
+              placeholder="Type to search..."
               autoComplete="off"
               className="form-control"
-              list="datalistOptions"
               id="exampleDataList"
-              placeholder="Type to search..."
-            />
+              list="datalistOptions"
+            ></input>
             <datalist id="datalistOptions">
               {all &&
                 all.map((data, i) => <option key={i} value={data.title} />)}
@@ -67,7 +69,7 @@ export default function Nav({ toggleTheme }) {
           </form>
         </div>
         <div className="bookmark">
-          <Link to={"/bookmark"}>
+          <Link to={"/bookmark"} className="flex_row">
             {bookmark.length === 0 ? (
               <FaHeart size={22} color="#fff" />
             ) : (
@@ -80,14 +82,14 @@ export default function Nav({ toggleTheme }) {
           </Link>
         </div>
         <div className="cart">
-          <Link to={"/cart"}>
+          <Link to={"/cart"} className="flex_row">
             <FaShoppingBag size={22} color="#fff" />
             {cartContext.length === 0 ? null : (
               <span className="cart_span">{cartContext.length}</span>
             )}
           </Link>
         </div>
-        <div className="theme_toggle">
+        <div className="theme_toggle flex_column">
           <button className="btn" onClick={toggleTheme}>
             {theme === "light" ? <span>💡</span> : <span>🔦</span>}
           </button>
