@@ -1,13 +1,20 @@
+#navbar {
+  position: relative;
+  width: 100%;
+  z-index: 15;
+}
 .nav {
+  gap: 20px;
+  z-index: 15;
   width: 100%;
   padding: 10px 40px;
-  background: rgb(255, 43, 43);
+  // background: rgb(255, 43, 43);
+  background: rgba(transparent, 0.5);
   margin: 0 auto;
   color: #fff;
   text-align: center;
   font-size: 3rem;
   .nav_links {
-    width: 50%;
     text-align: start;
     margin-bottom: 0;
     li {
@@ -21,7 +28,6 @@
     }
   }
   .nav_dashboard {
-    width: 45%;
     display: grid;
     grid-template-columns: 3fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -31,10 +37,11 @@
     align-content: center;
     .search {
       input {
-        padding: 10px 5px;
+        padding: 10px 8px;
         border: none;
         margin-right: 16px;
         font-size: 15px;
+        border-radius: 10px;
       }
     }
     .bookmark,
@@ -71,6 +78,10 @@
       li {
         font-size: 20px;
       }
+      img {
+        width: 90px;
+        height: 90px;
+      }
     }
     .nav_dashboard {
       grid-template-columns: 1fr 1fr 1fr;
@@ -90,5 +101,16 @@
 @keyframes beat {
   to {
     filter: drop-shadow(0 10px 40px green);
+  }
+}
+@media screen and (max-width: 600px) {
+  .nav {
+    .nav_dashboard {
+      .search {
+        input {
+          width: 180px;
+        }
+      }
+    }
   }
 }

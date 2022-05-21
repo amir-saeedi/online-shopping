@@ -1,0 +1,124 @@
+.main_header {
+  padding-bottom: 500px;
+  z-index: 10;
+}
+.main-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  margin-bottom: -4px;
+  img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    filter: blur(4px);
+  }
+}
+.online_shop-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  img {
+    width: 100%;
+    height: 350px;
+  }
+}
+.main-btn {
+  position: absolute;
+  display: flex;
+  top: 70%;
+  left: 75%;
+  transform: translate(-50%, -50%) rotate(-30deg) skewX(-15deg);
+  button {
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    border: none;
+    background: transparent;
+    padding: 12px 7px;
+    background: rgba(#fff, 0.8);
+    overflow: hidden;
+    border-radius: 10px;
+    white-space: nowrap;
+    svg {
+      font-size: 12px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      background: #111;
+      height: 155px;
+      width: 10px;
+      left: -75px;
+      top: -50px;
+      opacity: 0.5;
+      z-index: 10;
+      transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+      transform: rotate(+30deg);
+    }
+    &:hover::after {
+      left: 120%;
+      transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+}
+@media screen and (max-width: 915px) {
+  .main_header {
+    padding-bottom: 450px;
+  }
+  .main-img {
+    height: 530px;
+  }
+  .online_shop-img {
+    top: 45%;
+    width: 45%;
+    img {
+      height: 270px;
+    }
+  }
+  .main-btn {
+    top: 60%;
+    button {
+      font-size: 15px;
+      svg {
+        font-size: 10px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 915px) {
+  .online_shop-img {
+    top: 35%;
+  }
+  .main-btn {
+    top: 50%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .main_header {
+    padding-bottom: 300px;
+  }
+  .main-img {
+    height: 430px;
+  }
+  .online_shop-img {
+    top: 30%;
+    img {
+      height: 200px;
+    }
+  }
+  .main-btn {
+    top: 40%;
+    button {
+      font-size: 12px;
+      svg {
+        font-size: 8px;
+      }
+    }
+  }
+}

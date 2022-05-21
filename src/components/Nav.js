@@ -1,6 +1,5 @@
 import React from "react";
-import { FaShoppingBag } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
+import { FaShoppingBag, FaHeart } from "react-icons/fa";
 
 import { fetchProductsAll } from "../utils/api";
 import { useNavigate } from "react-router-dom";
@@ -36,65 +35,67 @@ export default function Nav({ toggleTheme }) {
     }
   };
   return (
-    <div className={`nav flex_row flex_nowrap`}>
-      <ul className="nav_links">
-        <li className="nav_link nav_home">
-          <Link to={"/"}>
-            <img src={logo} alt="logo website" />
-          </Link>
-        </li>
-      </ul>
-      <div className="nav_dashboard">
-        <div className="search">
-          <form
-            id="na_search"
-            className="flex_row"
-            onSubmit={(e) => {
-              e.preventDefault();
-              navSearch();
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Type to search..."
-              autoComplete="off"
-              className="form-control"
-              id="exampleDataList"
-              list="datalistOptions"
-            ></input>
-            <datalist id="datalistOptions">
-              {all &&
-                all.map((data, i) => <option key={i} value={data.title} />)}
-            </datalist>
-          </form>
-        </div>
-        <div className="bookmark">
-          <Link to={"/bookmark"} className="flex_row">
-            {bookmark.length === 0 ? (
-              <FaHeart size={22} color="#fff" />
-            ) : (
-              <FaHeart size={22} color="green" className="bookmark_icon" />
-            )}
+    <div id="navbar">
+      <section className={`nav flex_row flex_nowrap`}>
+        <ul className="nav_links">
+          <li className="nav_link nav_home">
+            <Link to={"/"}>
+              <img src={logo} className="logo" alt="logo website" />
+            </Link>
+          </li>
+        </ul>
+        <div className="nav_dashboard">
+          <div className="search">
+            <form
+              id="na_search"
+              className="flex_row"
+              onSubmit={(e) => {
+                e.preventDefault();
+                navSearch();
+              }}
+            >
+              <input
+                type="text"
+                placeholder="Type to search..."
+                autoComplete="off"
+                className="form-control"
+                id="exampleDataList"
+                list="datalistOptions"
+              ></input>
+              <datalist id="datalistOptions">
+                {all &&
+                  all.map((data, i) => <option key={i} value={data.title} />)}
+              </datalist>
+            </form>
+          </div>
+          <div className="bookmark">
+            <Link to={"/bookmark"} className="flex_row">
+              {bookmark.length === 0 ? (
+                <FaHeart size={22} color="#fff" />
+              ) : (
+                <FaHeart size={22} color="green" className="bookmark_icon" />
+              )}
 
-            {bookmark.length === 0 ? null : (
-              <span className="bookmark_span">{bookmark.length}</span>
-            )}
-          </Link>
+              {bookmark.length === 0 ? null : (
+                <span className="bookmark_span">{bookmark.length}</span>
+              )}
+            </Link>
+          </div>
+          <div className="cart">
+            <Link to={"/cart"} className="flex_row">
+              <FaShoppingBag size={22} color="#fff" />
+              {cartContext.length === 0 ? null : (
+                <span className="cart_span">{cartContext.length}</span>
+              )}
+            </Link>
+          </div>
+          <div className="theme_toggle flex_column">
+            <button className="btn" onClick={toggleTheme}>
+              {theme === "light" ? <span>💡</span> : <span>🔦</span>}
+            </button>
+          </div>
         </div>
-        <div className="cart">
-          <Link to={"/cart"} className="flex_row">
-            <FaShoppingBag size={22} color="#fff" />
-            {cartContext.length === 0 ? null : (
-              <span className="cart_span">{cartContext.length}</span>
-            )}
-          </Link>
-        </div>
-        <div className="theme_toggle flex_column">
-          <button className="btn" onClick={toggleTheme}>
-            {theme === "light" ? <span>💡</span> : <span>🔦</span>}
-          </button>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

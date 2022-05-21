@@ -7,6 +7,9 @@ import { fetchCategories } from "../utils/api";
 import Card from "./Card";
 import Loading from "./Loading";
 
+import mainImg from "../nav_img.jpg";
+import onlineShop from "../onlineshop2.png";
+
 const initialState = {
   loading: true,
   error: null,
@@ -46,7 +49,7 @@ export default function MainPage() {
 
   return (
     <div className={`body_theme ${theme}`}>
-      <div className={`container flax_column `}>
+      <div className={`flax_column `}>
         {state.loading && (
           <div>
             <Loading text="loadingMainPage" speed={300} />
@@ -57,33 +60,53 @@ export default function MainPage() {
             <h1>error:Failed to fetch</h1>
           </div>
         )}
-        {state.data &&
-          state.data.map((dataCategory, i) => (
-            <ul key={i}>
-              <h1>{dataCategory[0].category}</h1>
-              <div className="flex_row">
-                {dataCategory.map((repo, z) => {
-                  return (
-                    z < 3 && (
-                      <li key={repo.id}>
-                        <Card repo={repo} />
-                      </li>
-                    )
-                  );
-                })}
-                <Link
-                  className="more"
-                  to={`/products/${dataCategory[0].category}`}
-                >
-                  <div className="more-bg"></div>
-                  <p className="more-text">
-                    More <FaArrowRight />
-                  </p>
+        {state.data && (
+          <div>
+            <header className="main_header">
+              <section className="main-img">
+                <img src={mainImg} alt="mainImage" />
+              </section>
+              <section className="online_shop-img">
+                <img src={onlineShop} alt="onlineShop" />
+              </section>
+              <section className="main-btn">
+                <Link to={"/products/women's%20clothing"}>
+                  <button>
+                    View Collection <FaArrowRight color={"black"} />
+                  </button>
                 </Link>
-              </div>
-              <hr />
-            </ul>
-          ))}
+              </section>
+            </header>
+            <section className="container">
+              {state.data.map((dataCategory, i) => (
+                <ul key={i}>
+                  <h1>{dataCategory[0].category}</h1>
+                  <div className="flex_row">
+                    {dataCategory.map((repo, z) => {
+                      return (
+                        z < 3 && (
+                          <li key={repo.id}>
+                            <Card repo={repo} />
+                          </li>
+                        )
+                      );
+                    })}
+                    <Link
+                      className="more"
+                      to={`/products/${dataCategory[0].category}`}
+                    >
+                      <div className="more-bg"></div>
+                      <p className="more-text">
+                        More <FaArrowRight />
+                      </p>
+                    </Link>
+                  </div>
+                  <hr />
+                </ul>
+              ))}
+            </section>
+          </div>
+        )}
       </div>
     </div>
   );
