@@ -3,7 +3,7 @@
   width: 13rem;
   height: 350px;
   min-height: 350px;
-  background: #fcf6f5;
+  // background: #fcf6f5;
   border-radius: 20px;
   margin: 20px;
   transition: all 0.5s;
@@ -25,7 +25,7 @@
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
   h4 {
-    font-size: 20px;
+    font-size: 1.5rem;
   }
   h5 {
     font-size: 13px;
@@ -36,6 +36,24 @@
     display: flex;
     padding: 10px;
     font-size: 14px;
+    justify-content: space-around;
+    .price_rate-star {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+      &::after {
+        content: "";
+        width: 10px;
+        height: 30px;
+        background: #fff;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        left: 9px;
+      }
+    }
   }
 }
 .more {

@@ -23,7 +23,7 @@ export default function CartPage() {
                 <div className="cart_row flex_row">
                   <div className="cart-image width-50">
                     <Link to={`../product/${data.id}`}>
-                      <img src={data.image} alt="" />
+                      <img src={data.image} alt={data.title} />
                     </Link>
                   </div>
                   <div className="cart-title width-40 flex_column">

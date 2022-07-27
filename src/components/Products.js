@@ -6,9 +6,7 @@ import { fetchCategory } from "../utils/api";
 import Loading from "./Loading";
 import Card from "./Card";
 import themeContext from "../contexts/theme";
-//
 
-//
 export default function Products() {
   const { id } = useParams();
   const [products, setProducts] = React.useState(null);

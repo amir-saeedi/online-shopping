@@ -32,6 +32,9 @@
     }
     .liked_product {
       margin-bottom: 20px;
+      display: flex;
+      align-content: center;
+      gap: 5px;
       svg {
         margin-bottom: 3px;
       }

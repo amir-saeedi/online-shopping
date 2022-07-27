@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaHome,
+  FaShoppingBasket,
+  FaChild,
+} from "react-icons/fa";
 import themeContext from "../contexts/theme";
 //
 import { fetchCategories } from "../utils/api";
@@ -108,6 +113,12 @@ export default function MainPage() {
           </div>
         )}
       </div>
+      {/*  */}
+      {/* <div className="nav-bottom">
+        <FaHome />
+        <FaShoppingBasket />
+        <FaChild />
+      </div> */}
     </div>
   );
 }

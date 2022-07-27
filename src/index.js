@@ -6,14 +6,22 @@ import { LikeProductProvider } from "./contexts/likedProduct";
 import { CartProvider } from "./contexts/cart";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
-//
+/////////////////////////////////////////////
+
 import Nav from "./components/Nav";
-import MainPage from "./components/MainPage";
-import Product from "./components/Product";
-import Products from "./components/Products";
-import CartPage from "./components/CartPage";
-import BookmarkPage from "./components/bookmarkPage";
-//
+// import MainPage from "./components/MainPage";
+// import Product from "./components/Product";
+// import Products from "./components/Products";
+// import CartPage from "./components/CartPage";
+// import BookmarkPage from "./components/bookmarkPage";
+
+// const Nav = React.lazy(() => import("./components/Nav"));
+const MainPage = React.lazy(() => import("./components/MainPage"));
+const Product = React.lazy(() => import("./components/Product"));
+const Products = React.lazy(() => import("./components/Products"));
+const CartPage = React.lazy(() => import("./components/CartPage"));
+const BookmarkPage = React.lazy(() => import("./components/bookmarkPage"));
+/////////////////////////////////////////////////
 
 function App() {
   const [theme, setTheme] = React.useState("light");

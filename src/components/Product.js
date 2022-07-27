@@ -1,6 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { FaBookmark, FaStar, FaArrowRight } from "react-icons/fa";
 //
 import { fetchProduct, fetchSomeProducts } from "../utils/api";

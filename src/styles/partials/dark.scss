@@ -38,4 +38,7 @@
     border-top: 4px solid;
     border-radius: 10px;
   }
+  .price_rate-star::after {
+    background: #777 !important;
+  }
 }
