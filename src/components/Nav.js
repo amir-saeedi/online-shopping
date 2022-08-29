@@ -3,12 +3,14 @@ import { FaShoppingBag, FaHeart } from "react-icons/fa";
 
 import { fetchProductsAll } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import { FaUser, FaMoon, FaSun } from "react-icons/fa";
+import { IoLogOutOutline } from "react-icons/io5"
 
 import { Link } from "react-router-dom";
 
 import themeContext from "../contexts/theme";
-import likeProduct from "../contexts/likedProduct";
-import cart from "../contexts/cart";
+import likeProductContext from "../contexts/likedProduct";
+// import cart from "../contexts/cart";
 
 import logo from "../logo.jpg";
 
@@ -16,8 +18,8 @@ export default function Nav({ toggleTheme }) {
   const navigation = useNavigate();
   const [all, setAll] = React.useState("");
   const theme = React.useContext(themeContext);
-  const { bookmark } = React.useContext(likeProduct);
-  const { cartContext } = React.useContext(cart);
+  const { likeProduct } = React.useContext(likeProductContext);
+  // const { cartContext } = React.useContext(cart);
 
   React.useEffect(() => {
     fetchProductsAll()
@@ -34,68 +36,111 @@ export default function Nav({ toggleTheme }) {
       });
     }
   };
-  return (
-    <div id="navbar">
-      <section className={`nav flex_row flex_nowrap`}>
-        <ul className="nav_links">
-          <li className="nav_link nav_home">
-            <Link to={"/"}>
-              <img src={logo} className="logo" alt="logo website" />
-            </Link>
-          </li>
-        </ul>
-        <div className="nav_dashboard">
-          <div className="search">
-            <form
-              id="na_search"
-              className="flex_row"
-              onSubmit={(e) => {
-                e.preventDefault();
-                navSearch();
-              }}
-            >
-              <input
-                type="text"
-                placeholder="Type to search..."
-                autoComplete="off"
-                className="form-control"
-                id="exampleDataList"
-                list="datalistOptions"
-              ></input>
-              <datalist id="datalistOptions">
-                {all &&
-                  all.map((data, i) => <option key={i} value={data.title} />)}
-              </datalist>
-            </form>
-          </div>
-          <div className="bookmark">
-            <Link to={"/bookmark"} className="flex_row">
-              {bookmark.length === 0 ? (
-                <FaHeart size={22} color="#fff" />
-              ) : (
-                <FaHeart size={22} color="green" className="bookmark_icon" />
-              )}
+  function openNav() {
+    document.getElementById("mySidenav").style.width === "225px"
+      ? document.getElementById("mySidenav").style.width = "0px"
+      : document.getElementById("mySidenav").style.width = "225px";
+    // document.getElementById("main").style.marginLeft = "250px";
+  }
 
-              {bookmark.length === 0 ? null : (
-                <span className="bookmark_span">{bookmark.length}</span>
-              )}
-            </Link>
-          </div>
-          <div className="cart">
-            <Link to={"/cart"} className="flex_row">
-              <FaShoppingBag size={22} color="#fff" />
-              {cartContext.length === 0 ? null : (
-                <span className="cart_span">{cartContext.length}</span>
-              )}
-            </Link>
-          </div>
-          <div className="theme_toggle flex_column">
-            <button className="btn" onClick={toggleTheme}>
-              {theme === "light" ? <span>💡</span> : <span>🔦</span>}
-            </button>
-          </div>
+  // function closeNav() {
+  //   document.getElementById("mySidenav").style.width = "0";
+  //   // document.getElementById("main").style.marginLeft = "0";
+  // }
+  return (
+    <React.Fragment>
+      <div id="mySidenav" className="sidenav">
+        <div className="closebtn flex_row flex_nowrap">
+          <Link to={"/"}>
+            <img src={logo} className="logo" alt="logo website" />
+          </Link>
+          {/* <Link to="#" className="" onClick={closeNav}>&times;</Link> */}
         </div>
-      </section>
-    </div>
+        <Link to="#" style={{ paddingTop: "40px" }}>
+          <button className="togglebtn" onClick={toggleTheme}>
+            {theme === "light" && (
+              <span>
+                <FaMoon /> Dark
+              </span>
+            )}
+            {theme === "dark" && (
+              <span>
+                <FaSun /> Light
+              </span>
+            )}
+          </button>
+        </Link>
+        <div className="search">
+          <form
+            id="na_search"
+            className="flex_row"
+            style={{ justifyContent: "start" }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              navSearch();
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Type to search..."
+              autoComplete="off"
+              className="form-control"
+              id="exampleDataList"
+              list="datalistOptions"
+            ></input>
+            <datalist id="datalistOptions">
+              {all &&
+                all.map((data, i) => <option key={i} value={data.title} />)}
+            </datalist>
+          </form>
+        </div>
+        <Link to="/bookmark">
+          <FaHeart
+            className={likeProduct.bookmark.length === 0 ? "" : "bookmark_icon"}
+          />
+          {likeProduct.bookmark.length === 0 ? null : (
+            <span className="num_span">{likeProduct.bookmark.length}</span>
+          )}
+          <span>Bookmark</span>
+        </Link>
+        <Link to="/cart">
+          <FaShoppingBag
+            className={likeProduct.cart.length === 0 ? "" : "cart_icon"}
+          />
+          {likeProduct.cart.length === 0 ? null : (
+            <span className="num_span">{likeProduct.cart.length}</span>
+          )}
+          <span>Cart</span>
+        </Link>
+        <Link to="#"><FaUser /><span>Profile</span></Link>
+        <Link to="#"><IoLogOutOutline /><span>Logout</span></Link>
+      </div>
+      <div id="navbar">
+        <section className={`nav flex_row flex_nowrap`}>
+          <ul className="nav_links">
+            <li className="nav_link nav_home">
+              <Link to={"/"}>
+                <img src={logo} className="logo" alt="logo website" />
+              </Link>
+            </li>
+          </ul>
+          <div className="nav_dashboard">
+            <Link to="/">Products</Link>
+            <Link to="#">About</Link>
+            <Link to="#">Contact us</Link>
+            <div style={{ position: "relative" }}>
+              <span onClick={openNav}>
+                <input className="hamburger-checkbox" type="checkbox" />
+                <div className="hamburger-lines">
+                  <span className="line line1"></span>
+                  <span className="line line2"></span>
+                  <span className="line line3"></span>
+                </div>
+              </span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </React.Fragment>
   );
 }

@@ -3,22 +3,24 @@ import { Link } from "react-router-dom";
 
 import { FaTimes } from "react-icons/fa";
 
-import likedProduct from "../contexts/likedProduct";
-export default function CartPage() {
-  const { bookmark, setLikeProduct } = React.useContext(likedProduct);
+import likeProductContext from "../contexts/likedProduct";
+export default function BookmarkPage() {
+  const { likeProduct, setLikeProduct } = React.useContext(likeProductContext);
 
-  const deleteCart = (data) => {
-    setLikeProduct((p) => {
-      return p.filter((products) => products.id !== data.id);
-    });
+  const deleteBookmark = (data) => {
+    let newLikeProduct = likeProduct;
+    newLikeProduct = newLikeProduct.bookmark.some((products) => products.id === data.id)
+      ? { cart: [...newLikeProduct.cart], bookmark: newLikeProduct.bookmark.filter((products) => products.id !== data.id) }
+      : newLikeProduct
+    setLikeProduct(newLikeProduct)
   };
   return (
     <React.Fragment>
-      {bookmark.length === 0 && <div className="empty">empty product!</div>}
+      {likeProduct.bookmark.length === 0 && <div className="empty">empty product!</div>}
       <div className="container flex_column">
         <ul className="width-100">
-          {bookmark &&
-            bookmark.map((data, i) => (
+          {likeProduct.bookmark &&
+            likeProduct.bookmark.map((data, i) => (
               <li key={i} className="position">
                 <div className="cart_row flex_row">
                   <div className="cart-image width-50">
@@ -36,7 +38,7 @@ export default function CartPage() {
                 <hr />
                 <button
                   className="btn delete_btn"
-                  onClick={() => deleteCart(data)}
+                  onClick={() => deleteBookmark(data)}
                 >
                   <FaTimes size={22} color={"red"} />
                 </button>

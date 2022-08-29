@@ -1,7 +1,7 @@
 import React from "react";
 
-const likeProduct = React.createContext();
+const likeProductContext = React.createContext();
 
-export default likeProduct;
+export default likeProductContext;
 
-export const LikeProductProvider = likeProduct.Provider;
+export const LikeProductProvider = likeProductContext.Provider;

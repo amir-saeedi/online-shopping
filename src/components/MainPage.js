@@ -102,7 +102,7 @@ export default function MainPage() {
                     >
                       <div className="more-bg"></div>
                       <p className="more-text">
-                        More <FaArrowRight />
+                        <span>More</span> <FaArrowRight />
                       </p>
                     </Link>
                   </div>

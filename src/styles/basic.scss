@@ -1,10 +1,12 @@
 $color-light: #fcf6f5;
 $color-dark: #00145f;
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
 body {
   width: 100%;
   margin: 0;
@@ -21,16 +23,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
 li {
   list-style: none;
 }
+
 a {
   text-decoration: none;
   color: initial;
+
   &:hover {
     color: initial;
   }
 }
+
 h1,
 h2,
 h3,
@@ -41,39 +47,48 @@ p,
 div {
   color: $color-dark;
 }
+
 h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 800;
   padding-bottom: 30px;
   text-shadow: -1px -1px 1px #000, 1px 1px 1px #fdfdfd;
-  font-family: "Times New Roman";
+  font-family: cursive;
 }
+
 h2 {
   font-size: 4rem;
   font-weight: 700;
 }
+
 h3 {
   font-size: 3rem;
   font-weight: 600;
 }
+
 h4 {
   font-size: 2rem;
   font-weight: 500;
+
   svg {
     margin-bottom: 2px;
   }
 }
+
 h5 {
   font-size: 1rem;
   font-weight: 400;
 }
+
 h6 {
   font-size: 0.5rem;
   font-weight: 400;
 }
+
 hr {
   margin-top: 80px;
 }
+
 .flex_row,
 .flex_column {
   width: 100%;
@@ -85,38 +100,48 @@ hr {
   text-align: center;
   gap: 20px;
 }
+
 .flex_column {
   flex-direction: column;
   justify-content: center;
 }
+
 .flex_nowrap {
   flex-wrap: nowrap;
 }
+
 .flex_reverse {
   flex-wrap: wrap-reverse;
 }
+
 .width-50 {
   width: 50%;
 }
+
 .width-40 {
   width: 40%;
 }
+
 .width-100 {
   width: 100%;
 }
+
 .container {
   width: 85%;
   margin: 0 auto;
 }
+
 .position {
   position: relative;
 }
+
 .delete_btn {
   position: absolute;
   border: none;
   top: 12px;
   right: 11px;
 }
+
 .btn:focus {
   box-shadow: none;
 }
@@ -130,27 +155,33 @@ hr {
       text-align: center;
     }
   }
+
   .flex_row,
   .flex_column {
     justify-content: center;
   }
 }
+
 //
 
 @media screen and (max-width: 480px) {
+
   .width-40,
   .width-50 {
     width: 100%;
   }
 }
+
 //
 .text {
   font-size: 14px;
 }
+
 .body_theme {
   width: 100%;
   height: 100%;
 }
+
 .empty {
   padding-top: 50px;
   width: 100%;

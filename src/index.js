@@ -1,64 +1,59 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { ThemeProvider } from "./contexts/theme";
 import { LikeProductProvider } from "./contexts/likedProduct";
-import { CartProvider } from "./contexts/cart";
+import { UserProvider } from "./contexts/user"
+
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.scss";
-/////////////////////////////////////////////
 
 import Nav from "./components/Nav";
-// import MainPage from "./components/MainPage";
-// import Product from "./components/Product";
-// import Products from "./components/Products";
-// import CartPage from "./components/CartPage";
-// import BookmarkPage from "./components/bookmarkPage";
-
-// const Nav = React.lazy(() => import("./components/Nav"));
+const Login = React.lazy(() => import("./components/Login"));
 const MainPage = React.lazy(() => import("./components/MainPage"));
 const Product = React.lazy(() => import("./components/Product"));
 const Products = React.lazy(() => import("./components/Products"));
 const CartPage = React.lazy(() => import("./components/CartPage"));
-const BookmarkPage = React.lazy(() => import("./components/bookmarkPage"));
+const BookmarkPage = React.lazy(() => import("./components/BookmarkPage"));
 /////////////////////////////////////////////////
 
 function App() {
   const [theme, setTheme] = React.useState("light");
   const toggleTheme = () =>
     setTheme((theme) => (theme === "light" ? "dark" : "light"));
-  const [bookmark, setLikeProduct] = React.useState([]);
-  const [cartContext, setCart] = React.useState([]);
+  const [likeProduct, setLikeProduct] = React.useState({
+    cart: [],
+    bookmark: []
+  });
+  const [user, setUser] = React.useState(null)
 
   return (
     <React.StrictMode>
       <Router>
-        <LikeProductProvider
-          value={{
-            bookmark,
-            setLikeProduct,
-          }}
-        >
-          <CartProvider
+        <UserProvider value={{ user, setUser }}>
+          <LikeProductProvider
             value={{
-              cartContext,
-              setCart,
+              likeProduct,
+              setLikeProduct,
             }}
           >
             <ThemeProvider value={theme}>
               <Nav toggleTheme={toggleTheme} />
               <React.Suspense fallback={"loading!"}>
                 <Routes>
-                  <Route path="/" element={<MainPage />} />
-                  <Route path="/products/:id" element={<Products />} />
-                  <Route path="/product/:id" element={<Product />} />
-                  <Route path="/cart" element={<CartPage />} />
-                  <Route path="/bookmark" element={<BookmarkPage />} />
+                  <React.Fragment>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/products/:id" element={<Products />} />
+                    <Route path="/product/:id" element={<Product />} />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/bookmark" element={<BookmarkPage />} />
+                    {/* <Route path="/login" element={<Navigate replace to="/" />} /> */}
+                  </React.Fragment>
                 </Routes>
               </React.Suspense>
             </ThemeProvider>
-          </CartProvider>
-        </LikeProductProvider>
+          </LikeProductProvider>
+        </UserProvider>
       </Router>
     </React.StrictMode>
   );

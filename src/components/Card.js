@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
 export default function Card({ repo }) {
-  console.log(repo);
   return (
     <Link to={`/product/${repo.id}`}>
       <div className="card">

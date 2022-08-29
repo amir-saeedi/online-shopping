@@ -7,47 +7,57 @@
   border-radius: 20px;
   margin: 20px;
   transition: all 0.5s;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  background: #e5e5e5;
+  box-shadow: 5px 5px 10px #a7a7a7, -5px -5px 10px #ffffff;
+
   .card-title {
     padding: 5px;
     height: 50px;
     min-height: 50px;
     text-align: center;
   }
+
   img {
     min-height: 180px;
     max-height: 180px;
     width: 13rem;
     border-radius: 20px;
   }
+
   &:hover {
     transform: scale(1.02);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 10px #a7a7a7, -5px -5px 10px #ffffff;
   }
+
   h4 {
     font-size: 1.5rem;
   }
+
   h5 {
     font-size: 13px;
     font-weight: 600;
   }
+
   .price_rate {
     width: 100%;
     display: flex;
     padding: 10px;
     font-size: 14px;
     justify-content: space-around;
+
     .price_rate-star {
       position: relative;
       display: flex;
       align-items: center;
       gap: 10px;
       overflow: hidden;
+
       &::after {
         content: "";
         width: 10px;
         height: 30px;
-        background: #fff;
+        background: #e5e5e5;
         opacity: 0.5;
         position: absolute;
         top: 0;
@@ -56,20 +66,27 @@
     }
   }
 }
+
 .more {
   position: relative;
 }
+
 .more-bg {
   background: #999;
-  // background: #fdfdfd;
   filter: blur(8px);
   -webkit-filter: blur(8px);
   height: 100%;
 }
+
 .more-text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: center;
+  gap: 5px;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.2rem;
   position: absolute;
   top: 50%;
   left: 50%;

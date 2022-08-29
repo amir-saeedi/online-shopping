@@ -6,13 +6,13 @@ import { fetchProduct, fetchSomeProducts } from "../utils/api";
 import Card from "./Card";
 import Loading from "./Loading";
 import themeContext from "../contexts/theme";
-import likeProduct from "../contexts/likedProduct";
-import cart from "../contexts/cart";
+import likeProductContext from "../contexts/likedProduct";
+// import cart from "../contexts/cart";
 
 export default function Product() {
   const theme = React.useContext(themeContext);
-  const { bookmark, setLikeProduct } = React.useContext(likeProduct);
-  const { cartContext, setCart } = React.useContext(cart);
+  const { likeProduct, setLikeProduct } = React.useContext(likeProductContext);
+  // const { cartContext, setCart } = React.useContext(cart);
   const { id } = useParams();
   const [product, setProduct] = React.useState(null);
   const [error, SetError] = React.useState(null);
@@ -30,28 +30,27 @@ export default function Product() {
   if (document.querySelector(".color-icon-book"))
     document.querySelector(".color-icon-book").classList.remove("color_book");
 
-  bookmark.map((data) => {
-    if (product && document.querySelector(".color-icon-book"))
+  likeProduct.bookmark.map((data) => {
+    if (product && document.querySelector(".color-icon-book")) {
       return data.id === product.id
         ? document.querySelector(".color-icon-book").classList.add("color_book")
         : null;
+    }
   });
 
   const handelSetBookmark = () => {
-    setLikeProduct((p) => {
-      if (p.some((products) => products.id === product.id)) {
-        return p.filter((products) => products.id !== product.id);
-      } else return [...p, product];
-    });
+    let newLikeProduct = likeProduct;
+    newLikeProduct = newLikeProduct.bookmark.some((products) => products.id === product.id)
+      ? { cart: [...newLikeProduct.cart], bookmark: newLikeProduct.bookmark.filter((products) => products.id !== product.id) }
+      : { cart: [...newLikeProduct.cart], bookmark: [product, ...newLikeProduct.bookmark] }
+    setLikeProduct(newLikeProduct)
   };
   const handelCart = () => {
-    setCart((p) => {
-      if (p.some((products) => products.id === product.id)) {
-        return [...p];
-      } else {
-        return [...p, product];
-      }
-    });
+    let newLikeProduct = likeProduct;
+    newLikeProduct = newLikeProduct.cart.some((products) => products.id === product.id)
+      ? likeProduct
+      : { cart: [product, ...newLikeProduct.cart], bookmark: [...newLikeProduct.bookmark] }
+    setLikeProduct(newLikeProduct)
   };
   const isLoading = (data) => data === null && error === null;
 

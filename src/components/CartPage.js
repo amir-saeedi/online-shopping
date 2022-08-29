@@ -3,26 +3,27 @@ import { Link } from "react-router-dom";
 
 import { FaTimes } from "react-icons/fa";
 
-import cart from "../contexts/cart";
+import likeProductContext from "../contexts/likedProduct";
 export default function CartPage() {
-  const { cartContext, setCart } = React.useContext(cart);
+  const { likeProduct, setLikeProduct } = React.useContext(likeProductContext);
   const value = React.useRef([]);
 
   const deleteCart = (data) => {
-    setCart((p) => {
-      return p.filter((products) => products.id !== data.id);
-    });
+    let newLikeProduct = likeProduct;
+    newLikeProduct = newLikeProduct.cart.some((products) => products.id === data.id)
+      ? { cart: newLikeProduct.cart.filter((products) => products.id !== data.id), bookmark: [...newLikeProduct.bookmark] }
+      : newLikeProduct
+    setLikeProduct(newLikeProduct)
   };
 
-  cartContext.map((data) => value.current.push(data.price));
-
+  likeProduct.cart.map((data) => value.current.push(data.price));
   return (
     <React.Fragment>
-      {cartContext.length === 0 && <div className="empty">empty product!</div>}
+      {likeProduct.cart.length === 0 && <div className="empty">empty product!</div>}
       <div className="container flex_column">
         <ul className="width-100">
-          {cartContext &&
-            cartContext.map((data, i) => (
+          {likeProduct.cart &&
+            likeProduct.cart.map((data, i) => (
               <li key={i} className="position">
                 <div className="cart_row flex_row">
                   <div className="cart-image width-50">
@@ -35,17 +36,19 @@ export default function CartPage() {
                     <div>
                       <span>price= {data.price}</span>
                       <input
-                        value={data.price / value.current[i] || 1}
+                        value={(data.price / value.current[i]) || 1}
                         min="1"
                         max="10"
                         type={"number"}
                         onChange={(e) => {
-                          setCart((v) => {
-                            const newValue = [...v];
-                            newValue[i].price =
-                              value.current[i] * e.target.value;
-                            return newValue;
-                          });
+                          let newValue = likeProduct.cart
+                          newValue[i].price = value.current[i] * e.target.value;
+                          setLikeProduct(d => {
+                            return {
+                              cart: newValue,
+                              bookmark: d.bookmark
+                            }
+                          })
                         }}
                       />
                     </div>
@@ -64,7 +67,7 @@ export default function CartPage() {
         <Link to={""}>
           <div className="pay">
             The amount payable={" "}
-            {cartContext.reduce((total, num) => total + num.price, 0)}
+            {likeProduct.cart.reduce((total, num) => total + num.price, 0)}
           </div>
         </Link>
         <hr />
