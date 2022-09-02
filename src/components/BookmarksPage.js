@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 
 import likeProductContext from "../contexts/likedProduct";
-export default function BookmarkPage() {
+export default function BookmarksPage() {
   const { likeProduct, setLikeProduct } = React.useContext(likeProductContext);
 
   const deleteBookmark = (data) => {

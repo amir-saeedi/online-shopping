@@ -13,7 +13,7 @@ const MainPage = React.lazy(() => import("./components/MainPage"));
 const Product = React.lazy(() => import("./components/Product"));
 const Products = React.lazy(() => import("./components/Products"));
 const CartPage = React.lazy(() => import("./components/CartPage"));
-const BookmarkPage = React.lazy(() => import("./components/BookmarkPage"));
+const BookmarksPage = React.lazy(() => import("./components/BookmarksPage"));
 /////////////////////////////////////////////////
 
 function App() {
@@ -44,7 +44,7 @@ function App() {
                     <Route path="/products/:id" element={<Products />} />
                     <Route path="/product/:id" element={<Product />} />
                     <Route path="/cart" element={<CartPage />} />
-                    <Route path="/bookmark" element={<BookmarkPage />} />
+                    <Route path="/bookmark" element={<BookmarksPage />} />
                     {/* <Route path="/login" element={<Navigate replace to="/" />} /> */}
                     <Route path="/login" element={<Login/>} />
                   </React.Fragment>
