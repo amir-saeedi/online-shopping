@@ -288,3 +288,10 @@ input[type="checkbox"]:checked~.hamburger-lines .line3 {
 input[type="checkbox"]:checked~.logo {
   display: none;
 }
+.welcomeUser{
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #777;
+}

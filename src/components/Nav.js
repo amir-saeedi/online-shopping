@@ -1,16 +1,15 @@
 import React from "react";
 import { FaShoppingBag, FaHeart } from "react-icons/fa";
-
 import { fetchProductsAll } from "../utils/api";
-import { useNavigate } from "react-router-dom";
 import { FaUser, FaMoon, FaSun } from "react-icons/fa";
 import { IoLogOutOutline } from "react-icons/io5"
 
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import themeContext from "../contexts/theme";
 import likeProductContext from "../contexts/likedProduct";
-// import cart from "../contexts/cart";
+import userContext from "../contexts/user"
 
 import logo from "../logo.jpg";
 
@@ -19,7 +18,7 @@ export default function Nav({ toggleTheme }) {
   const [all, setAll] = React.useState("");
   const theme = React.useContext(themeContext);
   const { likeProduct } = React.useContext(likeProductContext);
-  // const { cartContext } = React.useContext(cart);
+  const { user, setUser } = React.useContext(userContext)
 
   React.useEffect(() => {
     fetchProductsAll()
@@ -113,7 +112,8 @@ export default function Nav({ toggleTheme }) {
           <span>Cart</span>
         </Link>
         <Link to="#"><FaUser /><span>Profile</span></Link>
-        <Link to="#"><IoLogOutOutline /><span>Logout</span></Link>
+        <Link to="/login" onClick={()=>setUser(null)}><IoLogOutOutline /><span>{user ? "Logout" : "login"}</span></Link>
+        <h5 className="welcomeUser">{user?`Welcome ${user.name}`:"Please login"}</h5>
       </div>
       <div id="navbar">
         <section className={`nav flex_row flex_nowrap`}>

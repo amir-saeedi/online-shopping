@@ -9,7 +9,7 @@ export function fetchProductsAll() {
       return data;
     })
     .catch((e) => {
-      console.log(e.message);
+      console.error(e.message);
     });
 }
 export function fetchCategory(id) {
@@ -41,6 +41,6 @@ export function fetchCategories() {
       return Promise.all(ids.map((id) => fetchCategory(id)));
     })
     .catch((e) => {
-      console.log(e.message);
+      console.error(e.message);
     });
 }

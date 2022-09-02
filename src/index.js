@@ -4,12 +4,11 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import { ThemeProvider } from "./contexts/theme";
 import { LikeProductProvider } from "./contexts/likedProduct";
 import { UserProvider } from "./contexts/user"
-
-// import "bootstrap/dist/css/bootstrap.min.css";
+import 'antd/dist/antd.css'
 import "./styles/main.scss";
 
 import Nav from "./components/Nav";
-const Login = React.lazy(() => import("./components/Login"));
+const Login = React.lazy(() => import("./components/auth/Login"));
 const MainPage = React.lazy(() => import("./components/MainPage"));
 const Product = React.lazy(() => import("./components/Product"));
 const Products = React.lazy(() => import("./components/Products"));
@@ -26,7 +25,6 @@ function App() {
     bookmark: []
   });
   const [user, setUser] = React.useState(null)
-
   return (
     <React.StrictMode>
       <Router>
@@ -48,6 +46,7 @@ function App() {
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/bookmark" element={<BookmarkPage />} />
                     {/* <Route path="/login" element={<Navigate replace to="/" />} /> */}
+                    <Route path="/login" element={<Login/>} />
                   </React.Fragment>
                 </Routes>
               </React.Suspense>
