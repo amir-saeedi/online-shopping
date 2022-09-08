@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 #navbar {
+  font-family: 'Roboto', sans-serif;
   position: relative;
   width: 100%;
   z-index: 15;
@@ -8,9 +11,9 @@
   gap: 20px;
   z-index: 15;
   width: 100%;
-  padding: 10px 40px;
+  padding: 0 40px 5px;
   // background: rgb(255, 43, 43);
-  background: rgba(transparent, 0.5);
+  background: #5161ce;
   margin: 0 auto;
   color: #fff;
   text-align: center;
@@ -19,10 +22,9 @@
   .nav_links {
     text-align: start;
     margin-bottom: 0;
-
     img {
-      width: 100px;
-      height: 100px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
     }
   }
@@ -35,19 +37,17 @@
     gap: 20px;
 
     a {
-      font-size: 2rem;
+      font-size: 1.5rem;
+      opacity: 1;
       color: #fff;
       padding: 5px 10px;
       transition: all 0.3s;
-
       &:hover {
-        transform: scale(0.9);
-        color: #999
-      }
+          opacity: 0.5;
+        }
     }
-
     span {
-      transition: all 0.2s;
+      transition: all 0.3s;
     }
   }
 }
@@ -238,7 +238,7 @@
   height: 26px;
   width: 32px;
   position: absolute;
-  top: 4px;
+  top: 0;
   left: 0;
   transform: translate(-50%, -50%);
   z-index: 2;

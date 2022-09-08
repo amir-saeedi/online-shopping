@@ -46,6 +46,54 @@ export default function Nav({ toggleTheme }) {
   //   document.getElementById("mySidenav").style.width = "0";
   //   // document.getElementById("main").style.marginLeft = "0";
   // }
+  // 
+  function test() {
+    var tabsNewAnim = document.querySelector("#navbarSupportedContent");
+    var selectorNewAnim = document.querySelector("#navbarSupportedContent").find("li").length;
+    var activeItemNewAnim = tabsNewAnim.find(".active");
+    var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+    var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+    var itemPosNewAnimTop = activeItemNewAnim.position();
+    var itemPosNewAnimLeft = activeItemNewAnim.position();
+    document.querySelector(".hori-selector").css({
+      top: itemPosNewAnimTop.top + "px",
+      left: itemPosNewAnimLeft.left + "px",
+      height: activeWidthNewAnimHeight + "px",
+      width: activeWidthNewAnimWidth + "px"
+    });
+    document.querySelector("#navbarSupportedContent").on("click", "li", function (e) {
+      document.querySelector("#navbarSupportedContent ul li").removeClass("active");
+      document.querySelector(this).addClass("active");
+      var activeWidthNewAnimHeight = document.querySelector(this).innerHeight();
+      var activeWidthNewAnimWidth = document.querySelector(this).innerWidth();
+      var itemPosNewAnimTop = document.querySelector(this).position();
+      var itemPosNewAnimLeft = document.querySelector(this).position();
+      document.querySelector(".hori-selector").css({
+        top: itemPosNewAnimTop.top + "px",
+        left: itemPosNewAnimLeft.left + "px",
+        height: activeWidthNewAnimHeight + "px",
+        width: activeWidthNewAnimWidth + "px"
+      });
+    });
+  }
+  // document.querySelector().ready(function () {
+  //   setTimeout(function () {
+  //     test();
+  //   });
+  // });
+  // document.querySelector(window).on("resize", function () {
+  //   setTimeout(function () {
+  //     test();
+  //   }, 500);
+  // });
+  if (document.querySelector(".navbar-toggler"))
+    document.querySelector(".navbar-toggler").click(function () {
+      document.querySelector(".navbar-collapse").slideToggle(300);
+      setTimeout(function () {
+        test();
+      });
+    });
+  // 
   return (
     <React.Fragment>
       <div id="mySidenav" className="sidenav">
@@ -112,8 +160,8 @@ export default function Nav({ toggleTheme }) {
           <span>Cart</span>
         </Link>
         <Link to="#"><FaUser /><span>Profile</span></Link>
-        <Link to="/login" onClick={()=>setUser(null)}><IoLogOutOutline /><span>{user ? "Logout" : "login"}</span></Link>
-        <h5 className="welcomeUser">{user?`Welcome ${user.name}`:"Please login"}</h5>
+        <Link to="/login" onClick={() => setUser(null)}><IoLogOutOutline /><span>{user ? "Logout" : "login"}</span></Link>
+        <h5 className="welcomeUser">{user ? `Welcome ${user.name}` : "Please login"}</h5>
       </div>
       <div id="navbar">
         <section className={`nav flex_row flex_nowrap`}>
