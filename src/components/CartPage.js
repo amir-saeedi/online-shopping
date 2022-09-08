@@ -56,7 +56,7 @@ export default function CartPage() {
                 </div>
                 <hr />
                 <button
-                  className="btn delete_btn"
+                  className="delete_btn"
                   onClick={() => deleteCart(data)}
                 >
                   <FaTimes size={22} color={"red"} />

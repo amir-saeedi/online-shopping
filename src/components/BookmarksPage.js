@@ -37,7 +37,7 @@ export default function BookmarksPage() {
                 </div>
                 <hr />
                 <button
-                  className="btn delete_btn"
+                  className="delete_btn"
                   onClick={() => deleteBookmark(data)}
                 >
                   <FaTimes size={22} color={"red"} />

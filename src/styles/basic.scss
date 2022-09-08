@@ -137,6 +137,7 @@ hr {
 }
 
 .delete_btn {
+  background: transparent;
   position: absolute;
   border: none;
   top: 12px;
@@ -146,7 +147,14 @@ hr {
 .btn:focus {
   box-shadow: none;
 }
-
+.btn{
+  font-size: 16px;
+  margin: 0 5px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #00145f;
+  color: #fff;
+}
 //
 @media screen and (max-width: 480px) {
   ul {

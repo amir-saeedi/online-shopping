@@ -1,4 +1,5 @@
 .login-theme{
+    height: 100vh;
     background: #092756;
     background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
     background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
@@ -33,11 +34,14 @@
         text-align: center;
     }
 }
-.ant-form-item{
+.ant-form-item,.ant-form-item-label{
     text-align: start;
 }
 .ant-form-item-required{
     color: rgb(244, 244, 244) !important;
+}
+.ant-form-item-required::after{
+    padding-right: 60px;
 }
 @media screen and (max-width:500px) {
     .main {

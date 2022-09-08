@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "./contexts/theme";
 import { LikeProductProvider } from "./contexts/likedProduct";
 import { UserProvider } from "./contexts/user"
@@ -14,6 +14,7 @@ const Product = React.lazy(() => import("./components/Product"));
 const Products = React.lazy(() => import("./components/Products"));
 const CartPage = React.lazy(() => import("./components/CartPage"));
 const BookmarksPage = React.lazy(() => import("./components/BookmarksPage"));
+const Profile =React.lazy(()=>import("./components/profile/Profile"))
 /////////////////////////////////////////////////
 
 function App() {
@@ -46,7 +47,8 @@ function App() {
                     <Route path="/cart" element={<CartPage />} />
                     <Route path="/bookmark" element={<BookmarksPage />} />
                     {/* <Route path="/login" element={<Navigate replace to="/" />} /> */}
-                    <Route path="/login" element={<Login/>} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/profile" element={<Profile />} />
                   </React.Fragment>
                 </Routes>
               </React.Suspense>
