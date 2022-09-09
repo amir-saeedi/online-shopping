@@ -16,7 +16,7 @@ export default function Login() {
     const [authenticated, setauthenticated] = React.useState(localStorage.getItem(localStorage.getItem("authenticated") || false));
     const onFinish = async (values) => {
         if (type === "login") {
-            return await fetch('http://localhost:3300/auth/login', {
+            return await fetch('https://api.freerealapi.com/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -30,6 +30,7 @@ export default function Login() {
                         throw new Error("dosn't exist account!!!");
                     }
                     setUser({
+                        name: values.name,
                         token: data.token
                     })
                 }).catch(e => console.error(e.message))

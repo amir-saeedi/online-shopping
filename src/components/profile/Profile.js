@@ -16,7 +16,7 @@ const Profile = () => {
     function getInitialState() {
         return ({
             person: {
-                name: user.namename,
+                name: user.name,
                 bio: 'Software Engineer based in India'
             },
             image: 'http://static1.squarespace.com/static/55acc005e4b098e615cd80e2/t/57b057398419c2c454f09924/1471025851733/',
