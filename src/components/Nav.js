@@ -126,8 +126,7 @@ export default function Nav({ toggleTheme }) {
           </ul>
           <div className="nav_dashboard">
             <Link to="/">Products</Link>
-            <Link to="#">About</Link>
-            <Link to="#">Contact us</Link>
+            <Link to="/about">About</Link>
             <div style={{ position: "relative" }}>
               <span onClick={openNav}>
                 <input className="hamburger-checkbox" type="checkbox" />
